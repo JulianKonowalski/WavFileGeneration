@@ -11,7 +11,7 @@ public:
 		_angle = 0;
 	}
 
-    void setFrequency(float frequency) {
+	virtual void setFrequency(float frequency) {
         _frequency = frequency;
         _offset = 2 * PI * _frequency / _sampleRate;
     }

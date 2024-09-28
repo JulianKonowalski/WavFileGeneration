@@ -11,12 +11,17 @@ public:
 
 	float process(void) {
 		float sample = _amplitude * 2 * (_angle - floor(_angle)) - 0.5;
-		_angle += sawOffset;
+		_angle += _sawOffset;
 		return sample;
 	}
 
+	void setFrequency(float frequency) {
+		_frequency = frequency;
+		_sawOffset = _frequency / _sampleRate;
+	}
+
 private:
-	float sawOffset = _frequency / _sampleRate;
+	float _sawOffset = _frequency / _sampleRate;
 };
 
 #endif
