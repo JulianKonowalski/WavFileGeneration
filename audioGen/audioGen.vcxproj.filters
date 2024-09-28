@@ -13,5 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\oscillators">
+      <UniqueIdentifier>{6456ff51-d025-4b2b-89e6-254150d0448d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="oscillator.h">
+      <Filter>Pliki nagłówkowe\oscillators</Filter>
+    </ClInclude>
+    <ClInclude Include="sawOscillator.h">
+      <Filter>Pliki nagłówkowe\oscillators</Filter>
+    </ClInclude>
+    <ClInclude Include="sineOscillator.h">
+      <Filter>Pliki nagłówkowe\oscillators</Filter>
+    </ClInclude>
+    <ClInclude Include="squareOscillator.h">
+      <Filter>Pliki nagłówkowe\oscillators</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
