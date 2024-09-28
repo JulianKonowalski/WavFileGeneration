@@ -134,6 +134,7 @@
     <ClInclude Include="oscillators\sawOscillator.h" />
     <ClInclude Include="oscillators\sineOscillator.h" />
     <ClInclude Include="oscillators\squareOscillator.h" />
+    <ClInclude Include="oscillators\triangleOscillator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,14 +3,13 @@
 
 #include "oscillator.h"
 #include <cmath>
-#define PI 3.14159265358979323846 //cmath's M_PI doesn't compile sometimes
 
-class SawOscillator : public Oscillator { //doesn't work
+class SawOscillator : public Oscillator {
 public:
     using Oscillator::Oscillator;
 
 	float process(void) {
-		float sample = _amplitude * 2 * (_angle - floor(_angle)) - 0.5;
+		float sample = _amplitude * 2 * (_angle - floor(_angle + 0.5));
 		_angle += _sawOffset;
 		return sample;
 	}

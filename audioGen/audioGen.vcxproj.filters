@@ -35,5 +35,8 @@
     <ClInclude Include="oscillators\squareOscillator.h">
       <Filter>Pliki nagłówkowe\oscillators</Filter>
     </ClInclude>
+    <ClInclude Include="oscillators\triangleOscillator.h">
+      <Filter>Pliki nagłówkowe\oscillators</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

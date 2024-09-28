@@ -6,6 +6,7 @@
 #include "oscillators/sineOscillator.h"
 #include "oscillators/squareOscillator.h"
 #include "oscillators/sawOscillator.h"
+#include "oscillators/triangleOscillator.h"
 
 const int sampleRate = 44100; 
 const int bitDepth = 16;
@@ -45,16 +46,21 @@ int main(void) {
 	Oscillator* sineOscillator = new SineOscillator(440, 0.5, 0, sampleRate);
 	Oscillator* squareOscillator = new SquareOscillator(440, 0.5, 0, sampleRate);
 	Oscillator* sawOscillator = new SawOscillator(440, 0.5, 0, sampleRate);
+	Oscillator* triangleOscillator = new TriangleOscillator(440, 0.5, 0, sampleRate);
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (sineOscillator->process() * maxAmplitude);
 		writeToFile(audioFile, sample, 2);
 	}
 	for (int i = 0; i < sampleRate * time_s; ++i) {
-		int sample = static_cast<int> (squareOscillator->process() * maxAmplitude);
+		int sample = static_cast<int> (triangleOscillator->process() * maxAmplitude);
 		writeToFile(audioFile, sample, 2);
 	}
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (sawOscillator->process() * maxAmplitude);
+		writeToFile(audioFile, sample, 2);
+	}
+	for (int i = 0; i < sampleRate * time_s; ++i) {
+		int sample = static_cast<int> (squareOscillator->process() * maxAmplitude);
 		writeToFile(audioFile, sample, 2);
 	}
 	int postAudioPosition = audioFile.tellp();

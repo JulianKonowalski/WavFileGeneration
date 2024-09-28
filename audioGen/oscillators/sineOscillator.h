@@ -3,7 +3,6 @@
 
 #include "oscillator.h"
 #include <cmath>
-#define PI 3.14159265358979323846 //cmath's M_PI doesn't compile sometimes
 
 class SineOscillator : public Oscillator {
 public:
