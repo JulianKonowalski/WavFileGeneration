@@ -38,5 +38,8 @@
     <ClInclude Include="oscillators\triangleOscillator.h">
       <Filter>Pliki nagłówkowe\oscillators</Filter>
     </ClInclude>
+    <ClInclude Include="wavFile.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
