@@ -9,7 +9,7 @@ This class is responsible for easy PCM .wav file creation. It takes care of crea
 * sample rate (Hz)
 * bit depth (a multiple of 8 like 16, 24, 32)
 
-Writing to the file can be done with `.write(int vale, int size)` method. The value parameter is meant for the sample value and size should always be equal to bit-depth / 8. After you're done writing to a file use the `.close()` method and the object will automatically fill in missing file data and close itself.
+Writing to the file can be done with `.write(int value, int size)` method. The value parameter is meant for the sample value and size should always be equal to bit-depth / 8. After you're done writing to a file use the `.close()` method and the object will automatically fill in missing file data and close itself.
 
 ### Notation Parser
 The Notation Parser reads through a .txt file and returns the first element of a one-directional linked list of notes. Each note stores its frequency (Hz) and duration (seconds). You can later loop though the notes, manipulating the oscillator's properties to play back the melody that's notated in the .txt file.
