@@ -7,29 +7,21 @@
 
 #include "oscillators/oscillator.h"
 #include "oscillators/sineOscillator.h"
-#include "oscillators/squareOscillator.h"
-#include "oscillators/sawOscillator.h"
-#include "oscillators/triangleOscillator.h"
 
 const int numberOfChannels = 1;
 const int sampleRate = 44100; 
 const int bitDepth = 16;
 const int sampleSize = bitDepth / 8;
-const int time_s = 1;
 const int maxAmplitude = pow(2, bitDepth - 1) - 1;
 
 const int tempo = 115;
 const float amplitude = 0.5;
 
-void writeToFile(std::ofstream& file, int value, int size) {
-	file.write(reinterpret_cast<const char*> (&value), size);
-}
-
 int main(void) {
 	WavFile* wavFile = new WavFile("../generated.wav", numberOfChannels, sampleRate, bitDepth);
 	NotationParser* parser = new NotationParser(tempo);
 	Note* notes = parser->parse("../notes.txt");
-	Oscillator* oscillator = new SineOscillator(440, amplitude / 2, 0, sampleRate);
+	Oscillator* oscillator = new SineOscillator(440, amplitude, 0, sampleRate);
 	std::cout << "Generating..." << std::endl;
 	while (notes != nullptr) {
 		float frequency = notes->getFrequency();
