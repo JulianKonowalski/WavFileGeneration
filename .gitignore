@@ -7,6 +7,9 @@
 *.wav
 *.reapeaks
 
+# Music notation files
+*.txt
+
 # User-specific files
 *.rsuser
 *.suo

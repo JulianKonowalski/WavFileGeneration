@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="notationParser.h" />
     <ClInclude Include="oscillators\oscillator.h" />
     <ClInclude Include="oscillators\sawOscillator.h" />
     <ClInclude Include="oscillators\sineOscillator.h" />

@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "wavFile.h"
+#include "notationParser.h"
 
 #include "oscillators/oscillator.h"
 #include "oscillators/sineOscillator.h"
@@ -17,39 +18,34 @@ const int sampleSize = bitDepth / 8;
 const int time_s = 1;
 const int maxAmplitude = pow(2, bitDepth - 1) - 1;
 
+const int tempo = 115;
+const float amplitude = 0.5;
+
 void writeToFile(std::ofstream& file, int value, int size) {
 	file.write(reinterpret_cast<const char*> (&value), size);
 }
 
 int main(void) {
-
-	WavFile* wavFile = new WavFile("../audio.wav", numberOfChannels, sampleRate, bitDepth);
-
-	//Oscillators Initialisation
-	Oscillator* sineOscillator = new SineOscillator(440, 0.5, 0, sampleRate);
-	Oscillator* squareOscillator = new SquareOscillator(440, 0.5, 0, sampleRate);
-	Oscillator* sawOscillator = new SawOscillator(440, 0.5, 0, sampleRate);
-	Oscillator* triangleOscillator = new TriangleOscillator(440, 0.5, 0, sampleRate);
-
-	//Audio Generation
-	for (int i = 0; i < sampleRate * time_s; ++i) {
-		int sample = static_cast<int> (sineOscillator->process() * maxAmplitude);
-		wavFile->write(sample, sampleSize);
-	}
-	for (int i = 0; i < sampleRate * time_s; ++i) {
-		int sample = static_cast<int> (triangleOscillator->process() * maxAmplitude);
-		wavFile->write(sample, sampleSize);
-	}
-	for (int i = 0; i < sampleRate * time_s; ++i) {
-		int sample = static_cast<int> (sawOscillator->process() * maxAmplitude);
-		wavFile->write(sample, sampleSize);
-	}
-	for (int i = 0; i < sampleRate * time_s; ++i) {
-		int sample = static_cast<int> (squareOscillator->process() * maxAmplitude);
-		wavFile->write(sample, sampleSize);
+	WavFile* wavFile = new WavFile("../generated.wav", numberOfChannels, sampleRate, bitDepth);
+	NotationParser* parser = new NotationParser(tempo);
+	Note* notes = parser->parse("../notes.txt");
+	Oscillator* oscillator = new SineOscillator(440, amplitude / 2, 0, sampleRate);
+	std::cout << "Generating..." << std::endl;
+	while (notes != nullptr) {
+		float frequency = notes->getFrequency();
+		if (frequency <= 20) {
+			oscillator->setAmplitude(0);
+		} else {
+			oscillator->setAmplitude(amplitude);
+			oscillator->setFrequency(frequency);
+		}
+		for (int i = 0; i < notes->getDuration() * sampleRate; ++i) {
+			int sample = static_cast<int> (oscillator->process() * maxAmplitude);
+			wavFile->write(sample, sampleSize);
+		}
+		notes = notes->getNext();
 	}
 	wavFile->close();
-
 	std::cout << "Done!" << std::endl;
 	return 0;
 }

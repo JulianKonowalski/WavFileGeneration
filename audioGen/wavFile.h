@@ -67,5 +67,5 @@ private:
 	int _postAudioPosition;
 };
 
-#endif // !WAVFILE_H
+#endif
 
