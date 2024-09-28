@@ -13,6 +13,7 @@
 const int numberOfChannels = 1;
 const int sampleRate = 44100; 
 const int bitDepth = 16;
+const int sampleSize = bitDepth / 8;
 const int time_s = 1;
 const int maxAmplitude = pow(2, bitDepth - 1) - 1;
 
@@ -33,19 +34,19 @@ int main(void) {
 	//Audio Generation
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (sineOscillator->process() * maxAmplitude);
-		wavFile->write(sample, 2);
+		wavFile->write(sample, sampleSize);
 	}
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (triangleOscillator->process() * maxAmplitude);
-		wavFile->write(sample, 2);
+		wavFile->write(sample, sampleSize);
 	}
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (sawOscillator->process() * maxAmplitude);
-		wavFile->write(sample, 2);
+		wavFile->write(sample, sampleSize);
 	}
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (squareOscillator->process() * maxAmplitude);
-		wavFile->write(sample, 2);
+		wavFile->write(sample, sampleSize);
 	}
 	wavFile->close();
 
