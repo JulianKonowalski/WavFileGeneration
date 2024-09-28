@@ -10,10 +10,13 @@ public:
     using Oscillator::Oscillator;
 
 	float process(void) {
-		float sample = _amplitude * 2 * fmod(_angle, 1) - 0.25;
-		_angle += _offset;
+		float sample = _amplitude * 2 * (_angle - floor(_angle)) - 0.5;
+		_angle += sawOffset;
 		return sample;
 	}
+
+private:
+	float sawOffset = _frequency / _sampleRate;
 };
 
 #endif

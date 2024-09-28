@@ -43,8 +43,8 @@ int main(void) {
 
 	//Audio Generation
 	Oscillator* sineOscillator = new SineOscillator(440, 0.5, 0, sampleRate);
-	Oscillator* squareOscillator = new SquareOscillator(440, 0.25, 0, sampleRate);
-	Oscillator* sawOscillator = new SawOscillator(440, 0.25, 0, sampleRate);
+	Oscillator* squareOscillator = new SquareOscillator(440, 0.5, 0, sampleRate);
+	Oscillator* sawOscillator = new SawOscillator(440, 0.5, 0, sampleRate);
 	for (int i = 0; i < sampleRate * time_s; ++i) {
 		int sample = static_cast<int> (sineOscillator->process() * maxAmplitude);
 		writeToFile(audioFile, sample, 2);

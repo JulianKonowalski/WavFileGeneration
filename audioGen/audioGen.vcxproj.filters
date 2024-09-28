@@ -23,16 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oscillator.h">
+    <ClInclude Include="oscillators\oscillator.h">
       <Filter>Pliki nagłówkowe\oscillators</Filter>
     </ClInclude>
-    <ClInclude Include="sawOscillator.h">
+    <ClInclude Include="oscillators\sawOscillator.h">
       <Filter>Pliki nagłówkowe\oscillators</Filter>
     </ClInclude>
-    <ClInclude Include="sineOscillator.h">
+    <ClInclude Include="oscillators\sineOscillator.h">
       <Filter>Pliki nagłówkowe\oscillators</Filter>
     </ClInclude>
-    <ClInclude Include="squareOscillator.h">
+    <ClInclude Include="oscillators\squareOscillator.h">
       <Filter>Pliki nagłówkowe\oscillators</Filter>
     </ClInclude>
   </ItemGroup>
